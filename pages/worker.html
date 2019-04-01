@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<meta name="author" content="Jose Gutiérrez">
+		<title>storage</title>
+		<script type="text/javascript">
+			if (window.Worker) {
+				// Set up global variable
+				var worker;
+		
+				// Create a new web worker
+				worker = new Worker("../js/worker.js");
+		
+				// Fire onMessage event handler
+				worker.onmessage = function(event) {
+					document.getElementById("result").innerHTML = event.data;
+				};
+			} else {
+				alert("Sorry, your browser do not support web worker.");
+			}
+		</script>
+	</head>
+<body>
+	<div id="result">
+	</div>
+</body>
+</html>
